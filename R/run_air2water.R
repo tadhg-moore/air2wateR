@@ -9,8 +9,9 @@
 #'@param mode character; mode in which the model will be run. There are three options:
 #'\enumerate{
 #'  \item "pso" - Particle swarm operator which runs a calibration routine and then a model simulation with the best parameters (default)
+#'  \item "lhc" - Uses Latin hypercube sampling to calibrate the model and then a model
+#' simulation with the best parameters.
 #'  \item "forward" - runs the model once with a set of provided parameters.
-#'  \item "lhc" - Uses Latin hypercube sampling to calibrate the model and then a model simulation with the best parameters.
 #'}
 #'@param use_pars boolean; use the parameters from the recent calibration. Only in
 #'"forward" mode. This will use the results from calibration routine in file

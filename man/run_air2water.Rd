@@ -12,8 +12,9 @@ run_air2water(sim_folder = ".", mode = "pso", use_pars = TRUE, verbose = FALSE)
 \item{mode}{character; mode in which the model will be run. There are three options:
 \enumerate{
  \item "pso" - Particle swarm operator which runs a calibration routine and then a model simulation with the best parameters (default)
+ \item "lhc" - Uses Latin hypercube sampling to calibrate the model and then a model
+simulation with the best parameters.
  \item "forward" - runs the model once with a set of provided parameters.
- \item "lhc" - Uses Latin hypercube sampling to calibrate the model and then a model simulation with the best parameters.
 }}
 
 \item{use_pars}{boolean; use the parameters from the recent calibration. Only in
@@ -24,13 +25,15 @@ run_air2water(sim_folder = ".", mode = "pso", use_pars = TRUE, verbose = FALSE)
 }
 \description{
 This runs the air2water model on the specific simulation stored in \code{sim_folder}.
-The specified \code{sim_folder} must contain valid NML files.
+The specified \code{sim_folder} must contain a valid air2water file setup. It also
+allows the model to be run in calibration or forward mode.
 }
 \examples{
 \dontrun{
 sim_folder <- system.file('extdata', package = 'air2wateR')
 gen_param(sim_folder = sim_folder, mean_depth = 147)
-run_air2water(sim_folder = sim_folder)
+run_air2water(sim_folder = sim_folder, method = "pso")
+run_air2water(sim_folder = sim_folder, method = "forward", use_pars = TRUE)
 }
 }
 \author{
